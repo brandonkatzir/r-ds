@@ -53,3 +53,4 @@ ggplot(
 ) +
   geom_point() +
   geom_smooth(method = "lm")
+t 
