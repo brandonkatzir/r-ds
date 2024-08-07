@@ -130,7 +130,7 @@ ggplot(data = penguins) +
   geom_point()
 
 # What does the na.rm argument do in geom_point()? What is the default value of the argument? 
-#Create a scatterplot where you successfully use this argument set to TRUE.
+#Create a scatterplot where you successfully use this argument set to TRUE
 
 ?ggplot2
 
@@ -198,7 +198,7 @@ ggplot() +
     mapping = aes(x = flipper_length_mm, y = body_mass_g)
   )
 
-# 1.3 ggplot2 calls 
+#1.3 ggplot2 calls 
 
 
 
