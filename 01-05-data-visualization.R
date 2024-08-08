@@ -15,3 +15,5 @@ library(ggplot2)
 
 #Preview dataset penguins 
 penguins
+
+str(penguins)
