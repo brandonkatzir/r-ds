@@ -268,3 +268,33 @@ ggplot(penguins, aes(x = body_mass_g)) +
 
 # exercises 
 
+# Make a bar plot of species of penguins, where you assign species to the y aesthetic. 
+# How is this plot different?
+
+ggplot(penguins, aes(y=(species))) + 
+  geom_bar()
+
+# How are the following two plots different? 
+# Which aesthetic, color or fill, is more useful for changing the color of bars?
+
+ggplot(penguins, aes(x = species)) +
+  geom_bar(color = "red")
+
+ggplot(penguins, aes(x = species)) +
+  geom_bar(fill = "red")
+
+# what does the `bins`argument in `geom_histogram()` do? 
+
+# it controls width of bins by increments of value X 
+
+str(diamonds)
+
+# Make a histogram of the carat variable in the diamonds dataset that is available 
+# when you load the tidyverse package. Experiment with different binwidths. 
+# What binwidth reveals the most interesting patterns?
+
+ggplot(diamonds, aes(x=carat)) + 
+  geom_histogram(binwidth=.1)
+
+
+
