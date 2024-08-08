@@ -294,7 +294,7 @@ str(diamonds)
 # What binwidth reveals the most interesting patterns?
 
 ggplot(diamonds, aes(x=carat)) + 
-  geom_histogram(binwidth=.1)
+  geom_histogram(binwidth=.5,fill = "aquamarine2", color = "aquamarine4")
 
 
 
