@@ -200,8 +200,71 @@ ggplot() +
 
 #1.3 ggplot2 calls 
 
+# good to memorize the first two calls that a function makes. in ggplot2, those first two 
+# calls are always data=X and mapping=aes(x=?, y=?). But those calls can be made without 
+# naming the functions explicity. 
 
+# thus
 
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point()
 
+# is the same as 
 
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point()
+
+# but the second code is more concise. still, important to remember that `data=` and 
+# `mapping = aes(x=?,y=?)` is still the "longhand" of what's going on here
+
+# this same plot can also be created with a pipe from the data source, e.g.
+
+penguins |> 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point()
+
+# using pipes like this is covered more later 
+
+#1.4 visualizing distributions 
+
+#how you visualize depends on whether data is categorical or numeric
+
+# a variable is categorical if it can only take one set of small values, e.g. 
+
+ggplot(penguins, aes(x = species)) +
+  geom_bar()
+
+# in charts with non-ordered levels, it's prefereable to arrange bars in ascending
+# or descending order. to do that, transform the variable into a `factor`, which is how
+# R handles categorical data, and then set the factor to be ordered in the preferred way, e.g.
+
+ggplot(penguins, aes(x = fct_infreq(species))) +
+  geom_bar()
+
+#1.4.2 numerical variables 
+
+# A variable is numerical (or quantitative) if it can take on a wide range of numerical 
+# values, and it is sensible to add, subtract, or take averages with those values
+# Numerical variables can be continuous or discrete.
+
+# binwidth is measured in units of the x variable 
+
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_histogram(binwidth = 20)
+
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_histogram(binwidth = 2000)
+
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_histogram(binwidth = 200)
+
+# density (read about in function list)..."like dropping wet spaghetti over bar graph
+
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_density()
+
+# exercises 
 
