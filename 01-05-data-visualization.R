@@ -133,4 +133,17 @@ ggplot(penguins, aes(x = island, fill = species)) +
 ggplot(penguins, aes(x = species, fill = island)) +
   geom_bar(position = "fill") #which island each species lives on 
 
+# ggsave() saves a plot in a specified path. important for reproducible code 
 
+# ggsave() exercises
+
+# 1. ggplot(mpg, aes(x = class)) +
+ggplot(mpg, aes(x = class)) +
+  geom_bar()
+
+ggplot(mpg, aes(x = cty, y = hwy)) +
+  geom_point()
+
+ggsave("mpg-plot.pdf")
+
+?ggsave
