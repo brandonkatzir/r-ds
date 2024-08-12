@@ -76,3 +76,61 @@ ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 # exercises 1.5.5
 
+# 1.  how many variables categorical vs. numeric
+?mpg
+mpg
+head(mpg)
+# 7 are categorical(?)
+
+#2. Make a scatterplot of hwy vs. displ using the mpg data frame. Next, map a third, 
+# numerical variable to color, then size, then both color and size, then shape. 
+# How do these aesthetics behave differently for categorical vs. numerical variables?
+
+ggplot(mpg, aes(x = hwy, y = displ)) + 
+  geom_point()
+
+
+ggplot(mpg, aes(x = hwy, y = displ)) + 
+  geom_point(aes(shape=model, color=model))
+
+#3. In the scatterplot of hwy vs. displ, what happens if you map a third variable to linewidth
+
+ggplot(mpg, aes(x = hwy, y = displ, linewidth = cyl)) + 
+  geom_point() 
+
+#4 see 2 above (mapping same variable to different aesthetics)
+
+#5 Make a scatterplot of bill_depth_mm vs. bill_length_mm and color the points by species. 
+# What does adding coloring by species reveal about the relationship between these two variables? 
+# What about faceting by species?
+str(penguins)
+
+ggplot(penguins, aes(x=bill_depth_mm, y=bill_length_mm)) + 
+  geom_point(aes(color=species)) + 
+  facet_wrap(~species)
+
+# 6 Why does the following yield two separate legends? How would you fix it to 
+# combine the two legends?
+
+# (answ: fix capitalization)
+
+ggplot(
+  data = penguins,
+  mapping = aes(
+    x = bill_length_mm, y = bill_depth_mm, 
+    color = species, shape = species
+  )
+) +
+  geom_point() +
+  labs(color = "species")
+ 
+# Create the two following stacked bar plots. Which question can you answer with 
+# the first one? Which question can you answer with the second one?
+
+ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(position = "fill") #percentageof species by island 
+
+ggplot(penguins, aes(x = species, fill = island)) +
+  geom_bar(position = "fill") #which island each species lives on 
+
+
